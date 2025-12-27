@@ -1,0 +1,20 @@
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTUwMzllZWNkZTBmNGQ4MjIyNDFlOWEiLCJpYXQiOjE3NjY4NjUzOTAsImV4cCI6MTc2Njk1MTc5MH0.yXw_0GA3bO2ax7TaPCb4THADpoSu_m8yC9h5LKU54I0",
+    "captain": {
+        "fullname": {
+            "firstname": "test_captain_fullname",
+            "lastname": "test_captain_lastname"
+        },
+        "email": "testemail@gmail.com",
+        "password": "$2b$10$ve2YcZ2h5b6yWNDMdLNrY.l9/nKenqmDY9180StNWNQQykieSP4Mm",
+        "status": "inactive",
+        "vehicle": {
+            "color": "red",
+            "plate": "PB 01 HY 6862",
+            "capacity": "3",
+            "vehicleType": "car"
+        },
+        "_id": "695039eecde0f4d822241e9a",
+        "__v": 0
+    }
+}

@@ -295,6 +295,67 @@ Files of interest
 - `Backend/services/user.service.js`
 - `Backend/models/user.model.js`
 
+**Captain Routes**
+
+- **Base path:** `/captains` (routes defined in `Backend/routes/captain.routes.js`)
+
+1) **Register Captain**
+
+- **Path:** `POST /captains/register`
+- **Description:** Register a new captain (driver). Validates captain profile and vehicle details, creates a captain record in the database.
+
+**Request**
+- **Content-Type:** `application/json`
+- **Body (JSON):**
+
+
+**Example Response**
+```json
+ 
+{
+  "fullname": { "firstname": "John", "lastname": "Smith" },
+  "email": "john.smith@example.com",
+  "password": "securePassword123",
+  "vehicle": {
+    "color": "blue",
+    "plate": "ABC-123",
+    "capacity": 4,
+    "vehicleType": "sedan"
+  }
+}
+```
+
+**Validation / Required fields**
+- **`email`**: required, valid email.
+- **`password`**: required, minimum length 6.
+- **`fullname.firstname`**: required, minimum length 3.
+- **`vehicle.color`**: required, minimum length 3.
+- **`vehicle.plate`**: required, minimum length 3.
+- **`vehicle.capacity`**: required, integer, minimum 1.
+- **`vehicle.vehicleType`**: required, minimum length 3.
+
+**Responses**
+- **201 Created:** Captain created successfully. Returns the created captain object (password not returned).
+- **400 Bad Request:** Validation failed. Response includes an `errors` array with details from `express-validator`.
+- **500 Internal Server Error:** Unexpected server/database error.
+
+Quick curl example (register captain):
+
+```bash
+curl -X POST http://localhost:3000/captains/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fullname": {"firstname":"John","lastname":"Smith"},
+    "email":"john.smith@example.com",
+    "password":"securePassword123",
+    "vehicle": {"color":"blue","plate":"ABC-123","capacity":4,"vehicleType":"sedan"}
+  }'
+```
+
+Notes
+- The captain creation flow uses `Backend/services/captain.service.js` which performs required-field checks and delegates to the `captain` model defined under `Backend/models`.
+- Adjust route base if your server mounts the routes under a different prefix.
+
  ## '/user/logout' Endpoint
 
  ### Description
