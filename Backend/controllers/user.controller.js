@@ -1,7 +1,7 @@
 import userModel from "../models/user.model.js";
 import createUser from "../services/user.service.js";
 import { validationResult } from "express-validator";
-import BlacklistToken from "../models/balcklistToken.model.js";
+import BlacklistToken from "../models/blacklistToken.model.js";
 
 export const registerUser = async(req, res, next )=>{
     const errors = validationResult(req);

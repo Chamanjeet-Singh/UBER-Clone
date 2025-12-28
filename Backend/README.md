@@ -308,22 +308,43 @@ Files of interest
 - **Content-Type:** `application/json`
 - **Body (JSON):**
 
+**Body (JSON — comments allowed)**
 
-**Example Response**
-```json
- 
+```jsonc
 {
+  "fullname": {
+    "firstname": "John", // required: string, min length 3
+    "lastname": "Smith"  // optional: string
+  },
+  "email": "john.smith@example.com", // required: valid email
+  "password": "securePassword123", // required: string, min length 6
+  "vehicle": {
+    "color": "blue",       // required: string, min length 3
+    "plate": "ABC-123",    // required: string, min length 3
+    "capacity": 4,           // required: integer, >= 1
+    "vehicleType": "sedan" // required: string, min length 3
+  }
+}
+```
+
+**Example Response (201 Created)**
+
+```json
+{
+  "_id": "64...",
   "fullname": { "firstname": "John", "lastname": "Smith" },
   "email": "john.smith@example.com",
-  "password": "securePassword123",
   "vehicle": {
     "color": "blue",
     "plate": "ABC-123",
     "capacity": 4,
     "vehicleType": "sedan"
-  }
+  },
+  "createdAt": "2025-12-28T12:00:00.000Z"
 }
 ```
+
+_Note: the `password` field is omitted from responses for security reasons._
 
 **Validation / Required fields**
 - **`email`**: required, valid email.
