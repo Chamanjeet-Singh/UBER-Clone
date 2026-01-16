@@ -168,9 +168,9 @@ const Captainsignup = () => {
                     }}
                     >
                     <option value="">Select Vehicle Type</option>
-                    <option value="car">Sedan</option>
-                    <option value="auto">SUV</option>
-                    <option value="moto">Truck</option>
+                    <option value="ubergo">Sedan</option>
+                    <option value="uberxl">SUV</option>
+                    <option value="comfort">Truck</option>
                 </select>
                 
             </div>
@@ -186,7 +186,7 @@ const Captainsignup = () => {
         </form>
         </div>
         <div>
-            <p className='text-[10px] leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span> and <span className='underline'>Terms of Service apply.</span></p>
+            <p className='text-[10px] mt-6 leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy Policy</span> and <span className='underline'>Terms of Service apply.</span></p>
         </div>
     </div>
   )
