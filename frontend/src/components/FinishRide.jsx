@@ -2,7 +2,6 @@ import React, {useState, useRef} from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
-import { ride } from '../../../Backend/models/ride.model'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 

@@ -9,7 +9,6 @@ import { SocketContext } from '../context/socketContext';
 import { useEffect, useContext } from 'react';
 import { CaptainDataContext } from '../context/CaptainContext';
 import ConfirmRide from '../components/ConfirmRide';
-import { set } from 'mongoose';
 
 const CaptainHome = () => {
 
