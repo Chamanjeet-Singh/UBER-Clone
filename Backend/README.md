@@ -392,3 +392,40 @@ Logout the current user and blacklist the token provided in cookies or the heade
 
  Requires a valid JWT Token in the authentication header:
 
+ ...existing code...
+
+## Rides: Get Fare Endpoint
+
+- Path: `GET /rides/get-fare`
+- Description: Returns fare estimates for available vehicle types between a pickup and destination address. The endpoint validates inputs, requires authentication (JWT) and uses Google Distance Matrix (via [`getDistanceandTime`](Backend/services/maps.service.js)) to compute distance/time and then calculates per-vehicle fares in [`getFare`](Backend/services/ride.service.js).
+- Query parameters:
+  - `pickup` (string, required) — pickup address (min length 3)
+  - `destination` (string, required) — destination address (min length 3)
+- Authentication: Bearer JWT in `Authorization` header (or cookie). Protected by [`authUser`](Backend/middlewares/auth.middleware.js).
+- Validations: Defined in [`Backend/routes/ride.routes.js`](Backend/routes/ride.routes.js).
+- Controller: [`getFareController`](Backend/controllers/ride.controller.js).
+- Implementation: Fare calculation performed by [`getFare`](Backend/services/ride.service.js), which calls [`getDistanceandTime`](Backend/services/maps.service.js).
+
+Responses
+- 200 OK: JSON object with numeric fare estimates for each vehicle type, for example:
+```json
+{
+  "ubergo": 12.34,
+  "uberxl": 18.45,
+  "comfort": 15.67
+}
+```
+- 400 Bad Request: validation errors (see response `errors` array)
+- 401 Unauthorized: missing/invalid token (handled by [`authUser`](Backend/middlewares/auth.middleware.js))
+- 500 Internal Server Error: unexpected server error
+
+Example curl:
+```sh
+curl "http://localhost:3000/rides/get-fare?pickup=2063+Waycross+Road&destination=Wright+State+University" \
+  -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+```
+
+Notes
+- The endpoint is mounted under `/rides` in [`Backend/app.js`](Backend/app.js).
+- Fares are computed using per-mile and per-minute rates inside [`getFare`](Backend/services/ride.service.js); the returned values are floating-point numbers (no rounding is enforced in the service).
+

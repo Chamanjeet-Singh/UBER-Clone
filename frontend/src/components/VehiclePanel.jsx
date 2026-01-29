@@ -10,6 +10,7 @@ const VehiclePanel = (props) => {
 
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.createRide('ubergo')
         }} className="flex border-2 active:border-black  mb-2 rounded-xl w-full p-3 items-center justify-between ">
           <img className="h-15" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/UberX_v1.png" alt="" />
           <div className="-ml-2 w-1/2">
@@ -17,10 +18,11 @@ const VehiclePanel = (props) => {
             <h5 className="font-medium text-sm">2 mins away </h5>
             <p className="font-normal text-xs text-gray-600">Faster</p>
           </div>
-          <h2 className="test-lg font-semibold">$7.12</h2>
+          <h2 className="test-lg font-semibold">${props.fare.uberGo}</h2>
         </div>
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.createRide('uberxl')
         }}className="flex border-2 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between ">
           <img className="h-15" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/IntercityXL.png" alt="" />
           <div className="-ml-2 w-1/2">
@@ -28,11 +30,12 @@ const VehiclePanel = (props) => {
             <h5 className="font-medium text-sm">5 mins away </h5>
             <p className="font-normal text-xs text-gray-600">Affordable, compact rides for group upto 6</p>
           </div>
-          <h2 className="test-lg font-semibold">$11.57</h2>
+          <h2 className="test-lg font-semibold">${props.fare.uberXL}</h2>
           
         </div>
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.createRide('comfort')
         }}className="flex border-2 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between ">
           <img className="h-15" src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/UberComfort_Premium.png" alt="" />
           <div className="-ml-2 w-1/2">
@@ -40,7 +43,7 @@ const VehiclePanel = (props) => {
             <h5 className="font-medium text-sm">6 mins away </h5>
             <p className="font-normal text-xs text-gray-600">Newer cars with extra legroom</p>
           </div>
-          <h2 className="test-lg font-semibold">$9.23</h2>
+          <h2 className="test-lg font-semibold">${props.fare.comfort}</h2>
         </div>
         
     </div>

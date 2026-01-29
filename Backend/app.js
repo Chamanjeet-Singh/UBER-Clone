@@ -13,7 +13,7 @@ import rideRoutes from "./routes/ride.routes.js";
 connectToDb();
 
 app.use(cors({
-    origin: "http://localhost:5173", // your frontend
+    origin: "https://0jzfnt87-5173.use.devtunnels.ms", // your frontend
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import captainModel from '../models/captain.model.js';
 
 /**
  * Geocode an address string using Google Maps Geocoding API.
@@ -97,4 +98,20 @@ export const getAutoCompleteSuggestionsService = async (input) => {
         console.error('error');
         throw error;
     }
+}
+
+export const getCaptainsInTheRadius = async (ltd, lng, radius) => {
+
+
+    //Radius in miles
+    const captains = await captainModel.find({
+        location: {
+            $geoWithin: {
+                $centerSphere: [ [ lng, ltd ], radius / 3963.2 ] // radius in miles
+            }
+        },
+        isAvailable: true
+    });
+
+    return captains;
 }
